@@ -4,6 +4,21 @@ import { sendSuccess } from "../utils/response";
 
 export const publicRouter = Router();
 
+// ─── GET /api/public/categories ─────────────────────────────────────────────
+publicRouter.get(
+  "/categories",
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const categories = await prisma.category.findMany({
+        orderBy: { name: "asc" }
+      });
+      return sendSuccess(res, { categories });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
 // ─── GET /api/public/products ────────────────────────────────────────────────
 publicRouter.get(
   "/products",
@@ -12,11 +27,11 @@ publicRouter.get(
       const { category, gender } = req.query;
 
       const whereClause: any = { isActive: true };
-      
+
       if (category) {
         whereClause.category = { name: { equals: String(category), mode: "insensitive" } };
       }
-      
+
       if (gender) {
         whereClause.gender = gender;
       }
@@ -28,7 +43,7 @@ publicRouter.get(
           variants: {
             include: {
               inventory: {
-                where: { shopId: null } // Only show online allocation for public shop
+                where: { shopId: null }
               }
             }
           }

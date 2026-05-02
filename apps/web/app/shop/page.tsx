@@ -1,14 +1,25 @@
-// apps/web/app/shop/page.tsx — Public Product Grid
+// apps/web/app/shop/page.tsx — Public Product Grid (Dynamic Categories)
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Shop — Jasma Collections",
-  description: "Explore our curated selection of luxury African fashion. Shop dresses, tops, and trousers.",
+  description: "Explore our curated selection of luxury African fashion and footwear.",
 };
 
-const CATEGORIES = ["All", "Dresses", "Tops", "Trousers"];
+async function getCategories() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/public/categories`, {
+      cache: "no-store",
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.data?.categories || [];
+  } catch {
+    return [];
+  }
+}
 
 async function getProducts(category?: string, gender?: string) {
   try {
@@ -34,18 +45,21 @@ export default async function ShopPage({
   searchParams: { category?: string; gender?: string };
 }) {
   const activeCategory = searchParams.category || "All";
-  const products = await getProducts(searchParams.category, searchParams.gender);
+
+  // Fetch both in parallel
+  const [categories, products] = await Promise.all([
+    getCategories(),
+    getProducts(searchParams.category, searchParams.gender),
+  ]);
 
   const formatCurrency = (amount: number) =>
     new Intl.NumberFormat("en-KE", { style: "currency", currency: "KES", maximumFractionDigits: 0 }).format(amount);
 
-  // Get lowest price for a product
   const getFromPrice = (product: any) => {
     if (!product.variants || product.variants.length === 0) return null;
     return Math.min(...product.variants.map((v: any) => Number(v.price)));
   };
 
-  // Check if any online stock exists
   const hasStock = (product: any) => {
     return product.variants?.some((v: any) =>
       v.inventory?.some((i: any) => i.quantity > 0)
@@ -58,9 +72,13 @@ export default async function ShopPage({
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-charcoal/95 backdrop-blur-sm border-b border-gold/20">
         <Link href="/" className="font-cormorant text-2xl font-light text-cream tracking-widest">JASMA</Link>
         <div className="hidden md:flex items-center gap-8">
-          {["Dresses", "Tops", "Trousers"].map((cat) => (
-            <Link key={cat} href={`/shop?category=${cat}`} className="font-inter text-xs tracking-widest uppercase text-beige-200 hover:text-gold transition-colors duration-200">
-              {cat}
+          {categories.slice(0, 5).map((cat: any) => (
+            <Link
+              key={cat.id}
+              href={`/shop?category=${cat.name}`}
+              className="font-inter text-xs tracking-widest uppercase text-beige-200 hover:text-gold transition-colors duration-200"
+            >
+              {cat.name}
             </Link>
           ))}
         </div>
@@ -73,25 +91,36 @@ export default async function ShopPage({
       </nav>
 
       <main className="pt-24 min-h-screen bg-cream">
-        {/* Header */}
         <div className="container-jasma py-10">
           <p className="text-xs font-inter tracking-[0.4em] uppercase text-gold mb-3">The Collection</p>
-          <h1 className="font-cormorant text-5xl text-charcoal mb-2">Shop All Styles</h1>
+          <h1 className="font-cormorant text-5xl text-charcoal mb-2">
+            {activeCategory === "All" ? "Shop All Styles" : activeCategory}
+          </h1>
           <div className="divider-gold mb-8" />
 
-          {/* Category Filters */}
+          {/* Dynamic Category Filters */}
           <div className="flex gap-2 flex-wrap mb-10">
-            {CATEGORIES.map((cat) => (
+            <Link
+              href="/shop"
+              className={`px-5 py-2 font-inter text-xs tracking-widest uppercase border transition-all duration-200 ${
+                activeCategory === "All"
+                  ? "bg-charcoal text-cream border-charcoal"
+                  : "text-charcoal border-beige-200 hover:border-charcoal"
+              }`}
+            >
+              All
+            </Link>
+            {categories.map((cat: any) => (
               <Link
-                key={cat}
-                href={cat === "All" ? "/shop" : `/shop?category=${cat}`}
+                key={cat.id}
+                href={`/shop?category=${cat.name}`}
                 className={`px-5 py-2 font-inter text-xs tracking-widest uppercase border transition-all duration-200 ${
-                  activeCategory === cat
+                  activeCategory === cat.name
                     ? "bg-charcoal text-cream border-charcoal"
                     : "text-charcoal border-beige-200 hover:border-charcoal"
                 }`}
               >
-                {cat}
+                {cat.name}
               </Link>
             ))}
           </div>
@@ -134,7 +163,6 @@ export default async function ShopPage({
                           <span className="font-inter text-xs tracking-widest uppercase text-cream bg-charcoal px-3 py-1">Out of Stock</span>
                         </div>
                       )}
-                      {/* Category badge */}
                       <div className="absolute top-3 left-3">
                         <span className="font-inter text-[10px] tracking-widest uppercase bg-cream/90 text-charcoal px-2 py-1">
                           {product.category.name}
