@@ -1,0 +1,15 @@
+"use client";
+// apps/web/components/Providers.tsx
+// Wraps the app with SessionProvider for NextAuth
+
+import { SessionProvider } from "next-auth/react";
+import { Session } from "next-auth";
+
+interface ProvidersProps {
+  children: React.ReactNode;
+  session?: Session | null;
+}
+
+export function Providers({ children, session }: ProvidersProps) {
+  return <SessionProvider session={session}>{children}</SessionProvider>;
+}

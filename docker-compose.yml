@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: jasma_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: jasma_user
+      POSTGRES_PASSWORD: jasma_pass
+      POSTGRES_DB: jasma_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - jasma_pgdata:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: jasma_pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@jasma.co.ke
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+
+volumes:
+  jasma_pgdata:

@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* â”€â”€â”€ CSS Custom Properties â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+:root {
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-inter: 'Inter', system-ui, sans-serif;
+
+  /* Brand colors as CSS vars for non-Tailwind usage */
+  --color-cream: #FAF7F2;
+  --color-beige: #E8DDD0;
+  --color-terracotta: #C4622D;
+  --color-gold: #C9A84C;
+  --color-charcoal: #1C1C1E;
+}
+
+/* â”€â”€â”€ Base Resets â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+@layer base {
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #FAF7F2;
+    color: #1C1C1E;
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+  }
+
+  input, textarea, select {
+    font-family: inherit;
+  }
+}
+
+/* â”€â”€â”€ Component Utilities â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+@layer components {
+  /* Primary CTA button â€” terracotta */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3 rounded-none
+           bg-terracotta text-white font-inter font-medium text-sm tracking-widest uppercase
+           transition-all duration-300
+           hover:bg-terracotta-400 hover:shadow-jasma
+           active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Secondary outlined button */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3 rounded-none border border-charcoal
+           text-charcoal font-inter font-medium text-sm tracking-widest uppercase
+           transition-all duration-300
+           hover:bg-charcoal hover:text-cream
+           active:scale-[0.98];
+  }
+
+  /* Gold accent button */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3 rounded-none
+           bg-gold text-white font-inter font-medium text-sm tracking-widest uppercase
+           transition-all duration-300
+           hover:bg-gold-400 hover:shadow-gold
+           active:scale-[0.98];
+  }
+
+  /* Ghost button */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2
+           px-4 py-2 text-sm font-medium text-charcoal
+           transition-colors duration-200
+           hover:text-terracotta;
+  }
+
+  /* Form input */
+  .input-field {
+    @apply w-full px-4 py-3 border border-beige-300 bg-white
+           text-charcoal text-sm font-inter
+           placeholder:text-beige-300
+           transition-all duration-200
+           focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta/30
+           disabled:opacity-50 disabled:bg-cream;
+  }
+
+  /* Form label */
+  .input-label {
+    @apply block text-xs font-inter font-medium tracking-wider uppercase
+           text-charcoal-100 mb-1.5;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-white border border-beige-200 shadow-sm
+           transition-shadow duration-300
+           hover:shadow-jasma;
+  }
+
+  /* Section container */
+  .container-jasma {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section heading */
+  .section-heading {
+    @apply font-cormorant text-4xl md:text-5xl font-light text-charcoal;
+  }
+
+  /* Gold divider */
+  .divider-gold {
+    @apply w-12 h-px bg-gold mx-auto my-4;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-inter font-medium
+           tracking-wider uppercase;
+  }
+
+  .badge-terracotta {
+    @apply badge bg-terracotta-50 text-terracotta-300;
+  }
+
+  .badge-gold {
+    @apply badge bg-gold-50 text-gold-400;
+  }
+
+  .badge-success {
+    @apply badge bg-green-50 text-green-700;
+  }
+
+  .badge-error {
+    @apply badge bg-red-50 text-red-700;
+  }
+
+  /* Admin sidebar nav item */
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 text-sm font-inter font-medium
+           text-beige-300 rounded-none transition-all duration-200
+           hover:text-cream hover:bg-white/10;
+  }
+
+  .nav-item-active {
+    @apply nav-item text-cream bg-white/15 border-l-2 border-gold;
+  }
+
+  /* Skeleton loading */
+  .skeleton {
+    @apply bg-gradient-to-r from-beige-200 via-beige-100 to-beige-200
+           bg-[length:200%_100%] animate-shimmer rounded-none;
+  }
+}
+
+/* â”€â”€â”€ Scrollbar styling â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5EFE7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4C4B0;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C4622D;
+}
+
+/* â”€â”€â”€ Print styles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
