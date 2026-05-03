@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 // â”€â”€ Validation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const loginSchema = z.object({
@@ -81,8 +82,8 @@ export default function LoginPage() {
       <div className="w-full max-w-md animate-slide-up">
         {/* Logo / Brand */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center w-14 h-14 bg-terracotta mb-5">
-            <span className="text-white font-cormorant text-2xl font-semibold tracking-wider">J</span>
+          <div className="inline-flex justify-center mb-5">
+            <Image src="/logo.png" alt="Jasma" width={72} height={72} className="object-contain" />
           </div>
           <h1 className="font-cormorant text-4xl font-light text-charcoal tracking-wide">
             Jasma Collections
