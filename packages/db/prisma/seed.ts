@@ -45,11 +45,10 @@ async function main() {
   await prisma.shop.deleteMany();
 
   // â”€â”€ 1. SHOPS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-  const shopWestlands = await prisma.shop.create({
+  const shopGateway = await prisma.shop.create({
     data: {
-      name: "Jasma â€” Westlands",
-      name: "Jasma — Westlands",
-      location: "Westlands Square, Ground Floor, Shop 14, Nairobi",
+      name: "Jasma — Gateway Mall",
+      location: "Gateway Mall, Nairobi",
     },
   });
 
@@ -60,7 +59,7 @@ async function main() {
     },
   });
 
-  console.log(`✅ Created shops: ${shopWestlands.name}, ${shopKaren.name}`);
+  console.log(`✅ Created shops: ${shopGateway.name}, ${shopKaren.name}`);
 
   // —— 2. USERS ————————————————————————————————————————————————————————————————
   const salt = 12;
@@ -384,7 +383,7 @@ async function main() {
   await prisma.stockMovement.create({
     data: {
       variantId: saleVariant1.id,
-      shopId: shopWestlands.id,
+      shopId: shopGateway.id,
       movementType: MovementType.IN,
       quantity: 20,
       reference: "SHIPMENT-2024-TRK-001",
