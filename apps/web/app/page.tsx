@@ -169,8 +169,8 @@ function BrandStory() {
           </p>
           <p className="font-inter text-beige-200 text-base leading-relaxed mb-10">
             Our collection is broad by design. We believe every woman deserves a complete wardrobe —
-            from the office to the event to the everyday. Find us at our two boutiques, or shop online
-            with delivery across Kenya.
+            from the office to the event to the everyday. Find us at our two boutiques — Gateway Mall on Mombasa Road, and Roasters along Thika Road — or shop our growing online collection
+            delivered across Kenya.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center text-center">
             {[
@@ -217,14 +217,14 @@ function ShopLocations() {
               mapsUrl: "https://maps.google.com/?q=Gateway+Mall+Nairobi",
             },
             {
-              name: "Peace Field Mall",
-              address: "2nd Floor, Peace Field Mall",
-              city: "Nairobi",
+              name: "Roasters — Thika Road",
+              address: "Roasters, Marurui Road",
+              city: "Along Thika Road, Nairobi",
               phone: "+254 115 005 910",
               whatsapp: "254115005910",
               hours: "Mon – Sat: 9:00am – 7:00pm",
               hoursSun: "Sunday: 11:00am – 5:00pm",
-              mapsUrl: "https://maps.google.com/?q=Peace+Field+Mall+Nairobi",
+              mapsUrl: "https://maps.google.com/?q=Roasters+Marurui+Road+Thika+Road+Nairobi",
             },
           ].map((shop) => (
             <div key={shop.name} className="bg-white border border-beige-200 p-8 shadow-sm hover:shadow-jasma transition-shadow duration-300">

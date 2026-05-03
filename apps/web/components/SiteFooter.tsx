@@ -12,14 +12,14 @@ const SHOPS = [
     mapsUrl: "https://maps.google.com/?q=Gateway+Mall+Nairobi",
   },
   {
-    name: "Peace Field Mall",
-    address: "2nd Floor, Peace Field Mall",
-    city: "Nairobi",
+    name: "Roasters — Thika Road",
+    address: "Roasters, Marurui Road",
+    city: "Along Thika Road, Nairobi",
     phone: "+254 115 005 910",
     whatsapp: "254115005910",
     hours: "Mon – Sat: 9am – 7pm",
     hoursSun: "Sun: 11am – 5pm",
-    mapsUrl: "https://maps.google.com/?q=Peace+Field+Mall+Nairobi",
+    mapsUrl: "https://maps.google.com/?q=Roasters+Marurui+Road+Thika+Road+Nairobi",
   },
 ];
 
