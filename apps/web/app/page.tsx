@@ -64,9 +64,21 @@ function Navbar() {
 function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-charcoal">
-      <div className="absolute inset-0 bg-gradient-to-br from-charcoal-300 via-charcoal-200 to-charcoal-100 opacity-90" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
+      {/* High-fashion background image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 mix-blend-luminosity"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=2000&auto=format&fit=crop')" }}
+      />
+      
+      {/* Vignette and gradient overlay to ensure text is readable and blends smoothly */}
+      <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/70 to-charcoal" />
+      <div className="absolute inset-0 bg-radial-gradient from-transparent to-charcoal/80" />
+      
+      {/* Ambient glowing orbs for dynamic luxury feel */}
+      <div className="absolute top-[20%] left-[20%] w-[500px] h-[500px] bg-gold/10 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '4s' }} />
+      <div className="absolute bottom-[20%] right-[20%] w-[500px] h-[500px] bg-terracotta/10 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '6s', animationDelay: '1s' }} />
+
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
       <div className="relative z-10 text-center container-jasma animate-fade-in">
         <p className="font-inter text-xs tracking-[0.4em] uppercase text-gold mb-6">
