@@ -13,7 +13,7 @@ const productSchema = z.object({
   name: z.string().min(2, "Product name must be at least 2 characters"),
   description: z.string().optional(),
   categoryId: z.string().min(1, "Please select a category"),
-  gender: z.enum(["MENS", "WOMENS", "UNISEX"]),
+  gender: z.enum(["MEN", "WOMEN", "UNISEX"]),
 });
 
 type ProductFormValues = z.infer<typeof productSchema>;
@@ -31,7 +31,7 @@ export default function NewProductPage() {
     formState: { errors },
   } = useForm<ProductFormValues>({
     resolver: zodResolver(productSchema),
-    defaultValues: { gender: "WOMENS" },
+    defaultValues: { gender: "WOMEN" },
   });
 
   useEffect(() => {
@@ -138,8 +138,8 @@ export default function NewProductPage() {
                 Gender *
               </label>
               <select {...register("gender")} className="input-field">
-                <option value="WOMENS">Women's</option>
-                <option value="MENS">Men's</option>
+                <option value="WOMEN">Women's</option>
+                <option value="MEN">Men's</option>
                 <option value="UNISEX">Unisex</option>
               </select>
               {errors.gender && <p className="text-red-500 text-xs mt-1">{errors.gender.message}</p>}
