@@ -16,7 +16,7 @@ function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-charcoal/95 backdrop-blur-sm border-b border-gold/20">
       <Link href="/" className="flex items-center">
-        <Image src="/logo.jpeg" alt="Jasma Collections" height={48} width={48} className="object-contain mix-blend-lighten" />
+        <Image src="/logo.png" alt="Jasma Collections" height={48} width={48} className="object-contain" />
       </Link>
       <div className="hidden md:flex items-center gap-8">
         {[

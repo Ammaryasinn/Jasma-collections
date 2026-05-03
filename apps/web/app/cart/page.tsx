@@ -52,7 +52,7 @@ export default function CartPage() {
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-charcoal/95 backdrop-blur-sm border-b border-gold/20">
         <Link href="/" className="flex items-center">
-          <Image src="/logo.jpeg" alt="Jasma Collections" height={44} width={44} className="object-contain mix-blend-lighten" />
+          <Image src="/logo.png" alt="Jasma Collections" height={44} width={44} className="object-contain" />
         </Link>
         <Link href="/shop" className="font-inter text-xs tracking-widest uppercase text-beige-200 hover:text-gold transition-colors">
           Continue Shopping
