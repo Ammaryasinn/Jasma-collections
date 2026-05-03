@@ -1,4 +1,3 @@
-// apps/web/app/shop/[id]/page.tsx — Product Detail Page
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -41,7 +40,9 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-charcoal/95 backdrop-blur-sm border-b border-gold/20">
-        <Link href="/" className="font-cormorant text-2xl font-light text-cream tracking-widest">JASMA</Link>
+        <Link href="/" className="flex items-center">
+          <Image src="/logo.jpeg" alt="Jasma Collections" height={44} width={44} className="object-contain" />
+        </Link>
         <Link href="/cart" className="font-inter text-xs tracking-widest uppercase text-beige-200 hover:text-gold transition-colors duration-200 flex items-center gap-2">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />

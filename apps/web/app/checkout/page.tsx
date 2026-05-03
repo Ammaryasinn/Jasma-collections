@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Loader2, Phone, MapPin, User } from "lucide-react";
+import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -78,7 +79,9 @@ export default function CheckoutPage() {
     return (
       <>
         <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-charcoal/95 backdrop-blur-sm border-b border-gold/20">
-          <Link href="/" className="font-cormorant text-2xl font-light text-cream tracking-widest">JASMA</Link>
+          <Link href="/" className="flex items-center">
+          <Image src="/logo.jpeg" alt="Jasma Collections" height={44} width={44} className="object-contain" />
+        </Link>
         </nav>
         <main className="pt-20 min-h-screen bg-cream flex items-center justify-center">
           <div className="max-w-md mx-auto text-center px-6">
@@ -114,7 +117,9 @@ export default function CheckoutPage() {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-charcoal/95 backdrop-blur-sm border-b border-gold/20">
-        <Link href="/" className="font-cormorant text-2xl font-light text-cream tracking-widest">JASMA</Link>
+        <Link href="/" className="flex items-center">
+          <Image src="/logo.jpeg" alt="Jasma Collections" height={44} width={44} className="object-contain" />
+        </Link>
         <Link href="/cart" className="font-inter text-xs tracking-widest uppercase text-beige-200 hover:text-gold transition-colors">
           Back to Cart
         </Link>
