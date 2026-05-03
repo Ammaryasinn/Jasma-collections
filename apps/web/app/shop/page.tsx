@@ -1,7 +1,8 @@
-// apps/web/app/shop/page.tsx — Public Product Grid (Dynamic Categories)
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { SiteFooter } from "@/components/SiteFooter";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
   title: "Shop — Jasma Collections",
@@ -196,6 +197,8 @@ export default async function ShopPage({
           )}
         </div>
       </main>
+      <SiteFooter />
+      <WhatsAppButton />
     </>
   );
 }

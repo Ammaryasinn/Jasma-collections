@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Trash2, ShoppingBag } from "lucide-react";
+import { SiteFooter } from "@/components/SiteFooter";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 interface CartItem {
   variantId: string;
@@ -139,6 +141,8 @@ export default function CartPage() {
           )}
         </div>
       </main>
+      <SiteFooter />
+      <WhatsAppButton />
     </>
   );
 }
