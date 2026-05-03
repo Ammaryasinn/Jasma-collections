@@ -34,7 +34,7 @@ export function SiteFooter() {
           {/* Brand column */}
           <div className="md:col-span-1">
             <Link href="/" className="inline-block mb-3">
-              <Image src="/logo.jpeg" alt="Jasma Collections" height={80} width={80} className="object-contain" />
+              <Image src="/logo.jpeg" alt="Jasma Collections" height={80} width={80} className="object-contain mix-blend-lighten" />
             </Link>
             <p className="font-inter text-xs text-beige-300 leading-relaxed mb-6">
               Luxury fashion inspired by Turkish elegance,<br />curated for the modern African woman.<br />Nairobi's premier boutique.
